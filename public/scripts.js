@@ -3,7 +3,10 @@ My objective in this homework is to get more comfortable with scope, and
 the passing of functions as arguments.
 
 I chose to work with the Pokemon API because it has lots of nested URLs,
-which will give me practice at working with Http requests.
+which will give me practice at working with multiple Http requests.
+
+The makeRequest function is pretty cool. It reads a url, converts the json
+found at that url into js objects, then passes them into a named function.
 */
 
 
@@ -39,7 +42,6 @@ var app = function(data){
   pokemons.forEach(function(pokemon){
     var pokeFigure = createPokeFigure(pokemon);
     container.appendChild(pokeFigure);
-    // console.log(pokemon.name);
   });
 }//app
 
@@ -52,9 +54,19 @@ var createPokeFigure = function(pokemon){
   var caption = document.createElement('figcaption');
   caption.innerText = pokemon.name;
 
+  //get image
+  var img = document.createElement('img');
+  img.classList.add('poke-picture');
+  img.src = getImageURL(pokemon);
+
   pokeFigure.appendChild(caption);
+  pokeFigure.appendChild(img);
 
   return pokeFigure;
+}
+
+var getImageURL = function(pokemon){
+  return "http://stuffpoint.com/cats/image/104659-cats-cute-cat.jpg";
 }
 
 

@@ -10,20 +10,27 @@ body {
 #poke-container {
   display: flex;
   flex-flow: row wrap;
-  background-color: yellow;
+  background-color: blue;
   justify-content: center;
 }
 
 .poke-panel {
   display: flex;
   flex-flow: column nowrap;
-
 }
 
 .poke-picture-figure {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+  align-items: center;
   width: 150px;
-  background-color: green;
-  justify-content: center;
+  background-color: yellow;
+}
+
+figcaption {
+  display: block;
+}
+
+.poke-picture {
+  width: 50%;
 }

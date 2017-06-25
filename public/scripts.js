@@ -39,10 +39,10 @@ var app = function(data){
     var container = document.getElementById('poke-container');
 
     //for each result, build a poke-panel
-    // pokemons.forEach(function(pokemon){
-      var pokeFigure = createPokeFigure(pokemons[0]);
+    pokemons.forEach(function(pokemon){
+      var pokeFigure = createPokeFigure(pokemon);
       container.appendChild(pokeFigure);
-    // });
+    });
 }//app
 
 

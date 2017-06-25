@@ -1,3 +1,29 @@
+h1 {
+  font-family: Roboto;
+  font-weight: 200;
+}
+
 body {
   background-color: tomato;
+}
+
+#poke-container {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: yellow;
+  justify-content: center;
+}
+
+.poke-panel {
+  display: flex;
+  flex-flow: column nowrap;
+
+}
+
+.poke-picture-figure {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 150px;
+  background-color: green;
+  justify-content: center;
 }

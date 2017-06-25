@@ -56,7 +56,7 @@ var createPokeFigure = function(pokemon){
 
   var img = document.createElement('img');
   img.classList.add('poke-picture');
-  img.classList.add(pokemon.name);
+  img.id = pokemon.name;
   img.src = "images/loading.jpg";
 
   makeRequest(pokemon.url, getImageURLs);
@@ -74,10 +74,13 @@ var getImageURLs = function(pokemonObjects){
 
   //now we've got the objects, we can get the required URL!
   var picURL = pokemonObjects.sprites.front_shiny;
-  console.log("picURL for "+objects.name, picURL);
+  console.log("picURL for "+pokemonObjects.name, picURL);
 
   //we now have the URL. Just need to find the right object in the DOM
   //and write to it
+  var imgToOverwrite = document.getElementById(pokemonObjects.name);
+  imgToOverwrite.src = picURL;
+
 }
 
 window.addEventListener('load', loadObjects);

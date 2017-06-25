@@ -54,31 +54,30 @@ var createPokeFigure = function(pokemon){
   var caption = document.createElement('figcaption');
   caption.innerText = pokemon.name;
 
-  //get image
   var img = document.createElement('img');
   img.classList.add('poke-picture');
   img.classList.add(pokemon.name);
   img.src = "images/loading.jpg";
 
-  getImageURL(pokemon);
+  makeRequest(pokemon.url, getImageURLs);
 
   pokeFigure.appendChild(caption);
+
   console.log("img: ", img);
   pokeFigure.appendChild(img);
 
   return pokeFigure;
 }
 
-var getImageURL = function(pokemon){
-  makeRequest(pokemon.url, getImageURLs);
-}
+var getImageURLs = function(pokemonObjects){
+  console.log("pokemonObjects: ", pokemonObjects);
 
-var getImageURLs = function(objects){
-  console.log("objects: ", objects);
-
-  //now we've got the objects, we can get the required URLS!
-  var picURL = objects.sprites.front_shiny;
+  //now we've got the objects, we can get the required URL!
+  var picURL = pokemonObjects.sprites.front_shiny;
   console.log("picURL for "+objects.name, picURL);
+
+  //we now have the URL. Just need to find the right object in the DOM
+  //and write to it
 }
 
 window.addEventListener('load', loadObjects);

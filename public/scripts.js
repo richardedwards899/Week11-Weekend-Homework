@@ -12,39 +12,37 @@ from it! Maybe I should be using binds?
 */
 
 var loadObjects = function(){
-  makeRequest('http://pokeapi.co/api/v2/pokemon/', app);
+    makeRequest('http://pokeapi.co/api/v2/pokemon/', app);
 }//loadObjects
 
 //returns the result of the callback function, which operates over the js
 //objects created from the json at 'url'.
 var makeRequest = function(url, callback){
-  var request = new XMLHttpRequest();
-  request.open("GET", url);
-  request.send();
+    var request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.send();
 
-  request.addEventListener('load', function(){
-    var jsonString = this.responseText;
-    var dataObjects = JSON.parse(jsonString);
-    callback(dataObjects);
-  });
-
+    request.addEventListener('load', function(){
+      var jsonString = this.responseText;
+      var dataObjects = JSON.parse(jsonString);
+      callback(dataObjects);
+    });
 }//makeRequest
 
 
 var app = function(data){
+    console.log("data: ", data);
 
-  console.log("data: ", data);
+    var pokemons = data.results;
+    console.log("data.results: ", pokemons);
 
-  var pokemons = data.results;
-  console.log("data.results: ", pokemons);
+    var container = document.getElementById('poke-container');
 
-  var container = document.getElementById('poke-container');
-
-  //for each result, build a poke-panel
-  // pokemons.forEach(function(pokemon){
-    var pokeFigure = createPokeFigure(pokemons[0]);
-    container.appendChild(pokeFigure);
-  // });
+    //for each result, build a poke-panel
+    // pokemons.forEach(function(pokemon){
+      var pokeFigure = createPokeFigure(pokemons[0]);
+      container.appendChild(pokeFigure);
+    // });
 }//app
 
 
@@ -60,21 +58,27 @@ var createPokeFigure = function(pokemon){
   var img = document.createElement('img');
   img.classList.add('poke-picture');
   img.classList.add(pokemon.name);
+  img.src = "images/loading.jpg";
+
   getImageURL(pokemon);
 
   pokeFigure.appendChild(caption);
+  console.log("img: ", img);
   pokeFigure.appendChild(img);
 
   return pokeFigure;
 }
 
 var getImageURL = function(pokemon){
-  // return "http://stuffpoint.com/cats/image/104659-cats-cute-cat.jpg";
-  makeRequest(pokemon.url, writeImageToHtml);
+  makeRequest(pokemon.url, getImageURLs);
 }
 
-var writeImageToHtml = function(objects){
+var getImageURLs = function(objects){
   console.log("objects: ", objects);
+
+  //now we've got the objects, we can get the required URLS!
+  var picURL = objects.sprites.front_shiny;
+  console.log("picURL for "+objects.name, picURL);
 }
 
 window.addEventListener('load', loadObjects);

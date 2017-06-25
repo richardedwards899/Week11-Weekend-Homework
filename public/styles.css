@@ -27,10 +27,6 @@ body {
   background-color: yellow;
 }
 
-figcaption {
-  display: block;
-}
-
 .poke-picture {
   width: 50%;
 }

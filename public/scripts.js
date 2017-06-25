@@ -107,6 +107,14 @@ var overwriteDefaultImages = function(pokemonObjects){
   makeRequest(pokemonObjects.species.url, overwriteDescription);
 }
 
+var overwriteDescription = function(speciesInfo){
+  console.log("overwriteDescription:", speciesInfo);
 
+  var description = speciesInfo.flavor_text_entries[1].flavor_text;
+  console.log("description", description);
+
+  var defaultDescription = document.getElementById(speciesInfo.name+"-description");
+  defaultDescription.innerText = description;
+}
 
 window.addEventListener('load', loadObjects);

@@ -7,16 +7,27 @@ body {
   background-color: tomato;
 }
 
+figure {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+figcaption {
+  font-family: Roboto;
+  font-weight: 100;
+}
+
+p {
+  font-family: Roboto;
+  font-size: 0.8rem;
+  padding: 5px;
+}
+
 #poke-container {
   display: flex;
   flex-flow: row wrap;
   background-color: blue;
   justify-content: center;
-}
-
-.poke-panel {
-  display: flex;
-  flex-flow: column nowrap;
 }
 
 .poke-picture-figure {
@@ -25,6 +36,13 @@ body {
   align-items: center;
   width: 150px;
   background-color: yellow;
+}
+
+.poke-panel {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-color: pink;
 }
 
 .poke-picture {
